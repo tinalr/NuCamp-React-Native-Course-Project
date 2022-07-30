@@ -4,6 +4,7 @@ import RenderCampsite from '../features/campsites/RenderCampsite';
 import { toggleFavorite } from '../features/favorites/favoritesSlice';
 import { useState } from 'react';
 import { Rating, Input } from 'react-native-elements';
+import { postComment } from '../features/comments/commentsSlice';
 
 const CampsiteInfoScreen = ({ route }) => {
   const { campsite } = route.params;
@@ -23,8 +24,8 @@ const CampsiteInfoScreen = ({ route }) => {
       text,
       campsiteId: campsite.id
     };
-    console.log(newComment);
-    setShowModal(!showModal)
+    dispatch(postComment(newComment));
+    setShowModal(!showModal);
   }
 
   const resetForm = () => {
@@ -91,15 +92,17 @@ const CampsiteInfoScreen = ({ route }) => {
         />
         <Input
           placeholder='Author'
-          leftIcon='user-o'
+          leftIcon={{ type: 'font-awesome', name: 'user-o' }}
           leftIconContainerStyle={{ paddingRight: 10 }}
           onChangeText={(author) => setAuthor(author)}
+          value={author}
         />
         <Input
           placeholder='Comment'
-          leftIcon='comment-o'
+          leftIcon={{ type: 'font-awesome', name: 'comment-o' }}
           leftIconContainerStyle={{ paddingRight: 10 }}
           onChangeText={(text) => setText(text)}
+          value={text}
         />
         <View style={styles.modal}>
           <View style={{ margin: 10 }}>
