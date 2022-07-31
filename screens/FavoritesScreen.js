@@ -11,29 +11,36 @@ const FavoritesScreen = ({ navigation }) => {
   const favorites = useSelector((state) => state.favorites);
 
   const renderFavoriteItem = ({ item: campsite }) => {
-    <ListItem
-      onPress={() =>
-        navigation.navigate('Directory', {
-          screen: 'CampsiteInfo',
-          params: { campsite }
-        })
-      }
-    >
-      <Avatar rounded source={{ uri: baseUrl + campsite.image }} />
-      <ListItem.Content>
-        <ListItem.Title>{campsite.name}</ListItem.Title>
-        <ListItem.Subtitle>{campsite.description}</ListItem.Subtitle>
-      </ListItem.Content>
-    </ListItem>
-  }
+    return (
+      <ListItem
+        onPress={() =>
+          navigation.navigate('Directory', {
+            screen: 'CampsiteInfo',
+            params: { campsite }
+          })
+        }
+      >
+        <Avatar rounded source={{ uri: baseUrl + campsite.image }} />
+        <ListItem.Content>
+          <ListItem.Title>{campsite.name}</ListItem.Title>
+          <ListItem.Subtitle>
+            {campsite.description}
+          </ListItem.Subtitle>
+        </ListItem.Content>
+      </ListItem>
+    );
+  };
 
   if (isLoading) {
     return <Loading />;
   }
   if (errMess) {
-    return <View><Text>{errMess}</Text></View>
+    return (
+      <View>
+        <Text>{errMess}</Text>
+      </View>
+    );
   }
-
   return (
     <FlatList
       data={campsitesArray.filter((campsite) =>
@@ -44,4 +51,6 @@ const FavoritesScreen = ({ navigation }) => {
     />
   );
 };
+
 export default FavoritesScreen;
+
