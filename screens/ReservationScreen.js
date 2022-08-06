@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Switch,
   Button,
-  Modal
+  Modal,
+  Alert
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -29,7 +30,21 @@ const ReservationScreen = () => {
     console.log('campers:', campers);
     console.log('hikeIn:', hikeIn);
     console.log('date:', date);
-    setShowModal(!showModal);
+    //setShowModal(!showModal);
+    Alert.alert(
+      'Begin Search?',
+      'Number of Campers: ' + campers + 'Hike-in? ' + hikeIn + 'Date: ' + date,
+      [{
+        text: 'Cancel',
+        onPress: () =>
+          resetForm(),
+        style: 'cancel'
+      }, {
+        text: 'Ok',
+        onPress: () =>
+          resetForm(),
+      }]
+    )
   };
 
   const resetForm = () => {
@@ -92,7 +107,7 @@ const ReservationScreen = () => {
             accessibilityLabel='Tap me to search for available campsites to reserve'
           />
         </View>
-        <Modal
+        {/* <Modal
           animationType='slide'
           transparent={false}
           visible={showModal}
@@ -120,7 +135,7 @@ const ReservationScreen = () => {
               title='Close'
             />
           </View>
-        </Modal>
+        </Modal> */}
       </Animatable.View>
     </ScrollView>
   );
