@@ -46,7 +46,7 @@ const RenderCampsite = (props) => {
           { cancelable: false }
         );
       } else if (isRightSwipe(gestureState)) {
-        return props.onShowModal();
+        props.onShowModal();
       }
     }
   });
