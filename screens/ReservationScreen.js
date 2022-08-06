@@ -33,7 +33,9 @@ const ReservationScreen = () => {
     //setShowModal(!showModal);
     Alert.alert(
       'Begin Search?',
-      'Number of Campers: ' + campers + 'Hike-in? ' + hikeIn + 'Date: ' + date,
+      'Number of Campers: ' + campers +
+      '\n\nHike-in? ' + hikeIn +
+      '\n\nDate: ' + date.toLocaleDateString('en-US'),
       [{
         text: 'Cancel',
         onPress: () =>
