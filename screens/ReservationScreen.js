@@ -33,7 +33,7 @@ const ReservationScreen = () => {
     //setShowModal(!showModal);
     Alert.alert(
       'Begin Search?',
-      'Number of Campers: ' + campers +
+      '\nNumber of Campers: ' + campers +
       '\n\nHike-in? ' + hikeIn +
       '\n\nDate: ' + date.toLocaleDateString('en-US'),
       [{
@@ -58,7 +58,7 @@ const ReservationScreen = () => {
 
   return (
     <ScrollView>
-      <Animatable.View animation={zoomIn} duration={2000} delay={1000}>
+      <Animatable.View animation='zoomIn' duration={2000} delay={1000}>
         <View style={styles.formRow}>
           <Text style={styles.formLabel}>Number of Campers:</Text>
           <Picker
