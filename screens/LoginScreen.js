@@ -40,7 +40,7 @@ const LoginTab = ({ navigation }) => {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Input
         placeholder='Username'
         leftIcon={{ type: 'font-awesome', name: 'user-o' }}
@@ -96,7 +96,7 @@ const LoginTab = ({ navigation }) => {
           titleStyle={{ color: 'blue' }}
         />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
