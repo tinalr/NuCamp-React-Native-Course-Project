@@ -74,7 +74,7 @@ const ReservationScreen = () => {
     Notifications.scheduleNotificationAsync({
       content: {
         title: 'Your Campsite Reservation Search',
-        body: 'Search for ${reservationDate} requested'
+        body: `Search for ${reservationDate} requested`
       },
       trigger: null
     })
