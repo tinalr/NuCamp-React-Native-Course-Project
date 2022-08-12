@@ -40,7 +40,7 @@ const LoginTab = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Input
         placeholder='Username'
         leftIcon={{ type: 'font-awesome', name: 'user-o' }}
@@ -96,12 +96,12 @@ const LoginTab = ({ navigation }) => {
           titleStyle={{ color: 'blue' }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const RegisterTab = () => {
-  return <ScrollView></ScrollView>
+  return <ScrollView styles={styles.container}></ScrollView>
 };
 
 const Tab = createBottomTabNavigator();
