@@ -2,7 +2,7 @@ import { Image, Platform, StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
 import CampsiteInfoScreen from './CampsiteInfoScreen';
 import DirectoryScreen from './DirectoryScreen';
-import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -153,6 +153,7 @@ const LoginNavigator = () => {
         name='Login'
         component={LoginScreen}
         options={({ navigation, route }) => ({
+          headerTitle: getFocusedRouteNameFromRoute(route),
           headerLeft: () => (
             <Icon
               name={
@@ -165,8 +166,7 @@ const LoginNavigator = () => {
               iconStyle={styles.stackIcon}
               onPress={() => navigation.toggleDrawer()}
             />
-          ),
-          headerTitle: getFocusedRouteNameFromRoute(route)
+          )
         })}
       />
     </Stack.Navigator>
