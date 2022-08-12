@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { CheckBox, Input, Button, Icon } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
-import createBottomTabNavigator from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const LoginTab = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -118,7 +118,6 @@ const RegisterTab = () => {
       remember
     };
     console.log(JSON.stringify(userInfo));
-
     if (remember) {
       SecureStore.setItemAsync(
         'userinfo',
@@ -134,82 +133,75 @@ const RegisterTab = () => {
     }
   };
 
-  return <ScrollView styles={styles.container}>
-    <Input
-      placeholder='Username'
-      leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-      onChangeText={(text) => setUsername(text)}
-      value={username}
-      containerStyle={styles.formInput}
-      leftIconContainerStyle={styles.formIcon}
-    />
-    <Input
-      placeholder='Password'
-      leftIcon={{ type: 'font-awesome', name: 'key' }}
-      onChangeText={(text) => setPassword(text)}
-      value={password}
-      containerStyle={styles.formInput}
-      leftIconContainerStyle={styles.formIcon}
-    />
-
-
-    <Input
-      placeholder='First Name'
-      leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-      onChangeText={(text) => setFirstName(text)}
-      value={firstName}
-      containerStyle={styles.formInput}
-      leftIconContainerStyle={styles.formIcon}
-    />
-
-
-    <Input
-      placeholder='Last Name'
-      leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-      onChangeText={(text) => setLastName(text)}
-      value={lastName}
-      containerStyle={styles.formInput}
-      leftIconContainerStyle={styles.formIcon}
-    />
-
-
-
-    <Input
-      placeholder='Email'
-      leftIcon={{ type: 'font-awesome', name: 'envelope-o' }}
-      onChangeText={(text) => setEmail(text)}
-      value={email}
-      containerStyle={styles.formInput}
-      leftIconContainerStyle={styles.formIcon}
-    />
-
-
-
-    <CheckBox
-      title='Remember Me'
-      center
-      checked={remember}
-      onPress={() => setRemember(!remember)}
-      containerStyle={styles.formCheckbox}
-    />
-    <View style={styles.formButton}>
-      <Button
-        onPress={() => handleRegister()}
-        title='Register'
-        color='#5637DD'
-        icon={
-          <Icon
-            name='user-plus'
-            type='font-awesome'
-            color='#fff'
-            iconStyle={{ marginRight: 10 }}
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <Input
+          placeholder='Username'
+          leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+          onChangeText={(text) => setUsername(text)}
+          value={username}
+          containerStyle={styles.formInput}
+          leftIconContainerStyle={styles.formIcon}
+        />
+        <Input
+          placeholder='Password'
+          leftIcon={{ type: 'font-awesome', name: 'key' }}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          containerStyle={styles.formInput}
+          leftIconContainerStyle={styles.formIcon}
+        />
+        <Input
+          placeholder='First Name'
+          leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+          onChangeText={(text) => setFirstName(text)}
+          value={firstName}
+          containerStyle={styles.formInput}
+          leftIconContainerStyle={styles.formIcon}
+        />
+        <Input
+          placeholder='Last Name'
+          leftIcon={{ type: 'font-awesome', name: 'user-o' }}
+          onChangeText={(text) => setLastName(text)}
+          value={lastName}
+          containerStyle={styles.formInput}
+          leftIconContainerStyle={styles.formIcon}
+        />
+        <Input
+          placeholder='Email'
+          leftIcon={{ type: 'font-awesome', name: 'envelope-o' }}
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          containerStyle={styles.formInput}
+          leftIconContainerStyle={styles.formIcon}
+        />
+        <CheckBox
+          title='Remember Me'
+          center
+          checked={remember}
+          onPress={() => setRemember(!remember)}
+          containerStyle={styles.formCheckbox}
+        />
+        <View style={styles.formButton}>
+          <Button
+            onPress={() => handleRegister()}
+            title='Register'
+            color='#5637DD'
+            icon={
+              <Icon
+                name='user-plus'
+                type='font-awesome'
+                color='#fff'
+                iconStyle={{ marginRight: 10 }}
+              />
+            }
+            buttonStyle={{ backgroundColor: '#5637DD' }}
           />
-        }
-        buttonStyle={{ backgroundColor: '#5637DD' }}
-      />
-    </View>
-
-  </ScrollView>
+        </View>
+      </View>
+    </ScrollView>
+  );
 };
 
 const Tab = createBottomTabNavigator();
@@ -222,6 +214,7 @@ const LoginScreen = () => {
     inactiveTintColor: '#808080',
     labelStyle: { fontSize: 16 }
   };
+
   return (
     <Tab.Navigator tabBarOptions={tabBarOptions}>
       <Tab.Screen
@@ -256,7 +249,7 @@ const LoginScreen = () => {
       />
     </Tab.Navigator>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
