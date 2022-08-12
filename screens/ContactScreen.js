@@ -4,14 +4,13 @@ import * as Animatable from 'react-native-animatable';
 import * as MailComposer from 'expo-mail-composer';
 
 const ContactScreen = () => {
-
   const sendMail = () => {
     MailComposer.composeAsync({
       recipients: ['campsites@nucamp.co'],
       subject: 'Inquiry',
-      body: 'To whome it may concern'
+      body: 'To whom it may concern:'
     });
-  }
+  };
 
   return (
     <ScrollView>
