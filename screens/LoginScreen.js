@@ -160,6 +160,7 @@ const RegisterTab = () => {
         resize: { width: 400 }
       }],
       { format: 'png' }
+      //{format: ImageManipulator.SaveFormat.PNG}
     );
     console.log(processedImage);
     setImageUrl(processedImage.uri);
