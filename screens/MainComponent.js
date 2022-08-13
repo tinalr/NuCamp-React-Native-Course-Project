@@ -249,12 +249,12 @@ const Main = () => {
         ToastAndroid.LONG
       );
 
-    // const unsubscribeNetInfo = NetInfo.addEventListener(
-    //   (connectionInfo) => {
-    //     handleConnectivityChange(connectionInfo);
-    //   }
-    // );
-    // return unsubscribeNetInfo;
+    const unsubscribeNetInfo = NetInfo.addEventListener(
+      (connectionInfo) => {
+        handleConnectivityChange(connectionInfo);
+      }
+    );
+    return unsubscribeNetInfo;
   }
 
 

@@ -149,6 +149,21 @@ const RegisterTab = () => {
       if (!capturedImage.cancelled) {
         console.log(capturedImage);
         processImage(capturedImage.uri);
+        MediaLibrary.saveToLibraryAsync(capturedImage.uri);
+      }
+    }
+  }
+
+  const getImageFromGallery = async () => {
+    const mediaLibraryPermissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (mediaLibraryPermissions.status === 'granted') {
+      const galleryImage = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        aspect: [1, 1]
+      });
+      if (!galleryImage.cancelled) {
+        console.log(galleryImage);
+        processImage(galleryImage.uri);
       }
     }
   }
@@ -164,20 +179,6 @@ const RegisterTab = () => {
     );
     console.log(processedImage);
     setImageUrl(processedImage.uri);
-  }
-
-  const getImageFromGallery = async () => {
-    const mediaLibraryPermissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (mediaLibraryPermissions.status === 'granted') {
-      const galleryImage = await ImagePicker.launchImageLibraryAsync({
-        allowsEditing: true,
-        aspect: [1, 1]
-      });
-      if (!galleryImage.cancelled) {
-        console.log(galleryImage);
-        processImage(galleryImage.uri);
-      }
-    }
   }
 
   return (
