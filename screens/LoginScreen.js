@@ -147,7 +147,7 @@ const RegisterTab = () => {
       });
       if (!capturedImage.cancelled) {
         console.log(capturedImage);
-        setImageUrl(processImage(capturedImage.uri));
+        processImage(capturedImage.uri);
       }
     }
   }
@@ -158,9 +158,9 @@ const RegisterTab = () => {
       [{
         resize: { width: 400 }
       }],
-      { format: SaveFormat.PNG }
+      { format: 'png' }
     );
-    console.log(processImage);
+    console.log(processedImage);
     setImageUrl(processedImage.uri);
   }
 
